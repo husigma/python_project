@@ -1,3 +1,5 @@
+from distutils.log import debug
+from turtle import color
 import numpy as np
 import pandas as pd
 import plotly 
@@ -18,13 +20,13 @@ app.layout = html.Div([
     ),
     html.Div([
                 html.Label(['Choose a graph:'],style={'font-weight': 'bold'}),
-                dcc.RadioItems(
+                dcc.Dropdown(
                     id='radio',
                     options=[
                              {'label': 'graph1', 'value': 'graph1'},
                              {'label': 'graph2', 'value': 'graph2'},
                     ],
-                    value='age',
+                    value=['age'],
                     style={"width": "60%"}
                 ),
         ])
@@ -38,23 +40,25 @@ app.layout = html.Div([
 )
 def build_graph(value):
     if value == 'graph1':
-        return px.scatter(
+        return px.line(
             df,
-            x="Age",
-            y="Fare",
-            color="Sex",
-            size_max=20,  # differentiate markers by color
-            opacity=0.90)
+            x="Age"
+            )
 
     else:
-        return px.scatter(
+        return px.line(
             df,
-            x="Age",
-            y="Pclass",
-            color="Sex",
-            size_max=20,  # differentiate markers by color
-            opacity=0.90)
+            x="Pclass", 
+            y = 'Sex', 
+            color = 'Sex'
+            )
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
-    app.run_server("192.168.0.37","9090")
+    #app.run_server(debug=True)
+    app.run_server("192.168.0.37","9090", debug = True)
+
+2	4	3
+3	3	3
+4	3	6
+
+(2,3,4,4,3,3,3,3,6)
