@@ -14,5 +14,5 @@ def err():
     print('Please enter a number, what you ener was not a number')
 
 
-st.write("Hello ,let's learn how to build a streamlit app together")
+#st.write("Hello ,let's learn how to build a streamlit app together")
 
